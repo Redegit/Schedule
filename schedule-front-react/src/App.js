@@ -1,7 +1,9 @@
+import { Table } from "./components/table/Table";
+
 function App() {
   return (
     <div>
-      Расписание ПИ21-2
+      <Table />
     </div>
   );
 }
