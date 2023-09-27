@@ -1,0 +1,76 @@
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@mixin neon-bg {
+    background: conic-gradient(from var(--gradient-angle),
+            var(--clr-2),
+            var(--clr-3),
+            var(--clr-4),
+            var(--clr-5),
+            var(--clr-4),
+            var(--clr-3),
+            var(--clr-2),
+        );
+}
+
+.button-container {
+    position: relative;
+    isolation: isolate;
+    width: fit-content;
+    height: fit-content;
+
+    .neon {
+        --animation-speed: 10s;
+        background-color: var(--bg-dark);
+        padding: 1rem;
+        border-radius: 1rem;
+        line-height: normal;
+        transition: background-color .3s, scale .3s;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: var(--font-light);
+    }
+
+    .neon::after,
+    .neon::before {
+        content: '';
+        position: absolute;
+        inset: -.1rem;
+        background-color: var(--clr-4);
+        border-radius: inherit;
+        z-index: -1;
+        transition: filter 0.3s;
+        @include neon-bg;
+        animation: neon-gradient-animation var(--animation-speed) linear infinite;
+    }
+
+    .neon::after {
+        filter: blur(0.5rem);
+    }
+
+    @keyframes neon-gradient-animation {
+        from {
+            --gradient-angle: 0deg;
+        }
+
+        to {
+            --gradient-angle: 360deg;
+        }
+    }
+
+    .neon:hover::after,
+    .neon:focus-visible::after {
+        filter: blur(1rem);
+    }
+
+    .neon:hover,
+    .neon:focus-visible {
+        --animation-speed: 2s;
+    }
+
+
+}

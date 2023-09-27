@@ -29,8 +29,8 @@ class Teacher(models.Model):
 
 class Lesson(models.Model):
     name = models.CharField(max_length=100, default="Предмет")
-    subject_id = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
+    subject_ref = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    teacher_ref = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
     start_dt = models.DateTimeField()
     end_dt = models.DateTimeField()
     classroom = models.CharField(max_length=50, null=True)
@@ -40,11 +40,14 @@ class Lesson(models.Model):
     class Meta:
         db_table = 'Lesson'
 
+    def __str__(self):
+        return f"{self.name}, {self.start_dt}"
+
 
 class TemplateLesson(models.Model):
     name = models.CharField(max_length=100, default="Предмет")
-    subject_id = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
+    subject_ref = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    teacher_ref = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
     start_dt = models.DateTimeField()
     end_dt = models.DateTimeField()
     classroom = models.CharField(max_length=50, null=True)
@@ -56,7 +59,7 @@ class TemplateLesson(models.Model):
 
 
 class Homework(models.Model):
-    lesson_id = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    lesson_ref = models.ForeignKey(Subject, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, default="Не выдано")
     priority = models.IntegerField(choices=(
         ("LOW", "Низкий"),

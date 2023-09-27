@@ -17,10 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from schedule.views import SubjectsView, TemplateLessonsView
+from schedule.views import SubjectsView, TemplateLessonsView, TemplateLessonJoin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/subjects/', SubjectsView.as_view(), name='subject-list'),
-    path('api/template-lessons/', TemplateLessonsView.as_view(), name='template-lessons-list'),
+    path('api/template-lessons/', TemplateLessonJoin.as_view(), name='template-lessons-list'),
 ]
