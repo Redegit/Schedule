@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from schedule.views import SubjectsView, TemplateLessonsView, TemplateLessonJoin
+from schedule.views import SubjectsView, TemplateLessonsView, TemplateLessonJoin, TeacherView, proxy_request
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/subjects/', SubjectsView.as_view(), name='subject-list'),
     path('api/template-lessons/', TemplateLessonJoin.as_view(), name='template-lessons-list'),
+    path('api/teachers/', TeacherView.as_view(), name='teacher-list'),
+    path('api/ruz/', proxy_request, name='ruz-api')
 ]

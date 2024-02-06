@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import './LessonCard.scss'
 import { useState } from "react";
-import { LessonEditor } from "../LessonEditor/LessonEditor";
+import { LessonPopUp } from "../LessonPopUp/LessonPopUp";
 
 export const LessonCard = ({ lesson }) => {
   const [editorOpened, setEditorOpened] = useState(false);
@@ -20,10 +20,13 @@ export const LessonCard = ({ lesson }) => {
 
   const getLessonType = () => {
     switch (lesson.type) {
-      case "Семинар": return "sem";
-      case "Лекция": return "lec";
+      case "Практические (семинарские) занятия": return "sem";
+      case "Лекции": return "lec";
       case "Экзамен": return "exam";
+      case "Повторная промежуточная аттестация (экзамен)": return "exam";
       case "Зачет": return "test";
+      case "Повторная промежуточная аттестация (зачет)": return "test";
+      case "Военная подготовка": return "mil";
       default: return ""
     }
   }
@@ -31,7 +34,7 @@ export const LessonCard = ({ lesson }) => {
   return (
     <div className={`lesson-card`}>
       <div className="time-container">
-        <div className="time">{`${lesson.getStartTime()} - ${lesson.getEndTime()}`}</div>
+        <div className="time">{`${lesson.number}) ${lesson.getStartTime()} - ${lesson.getEndTime()}`}</div>
       </div>
 
       <div onClick={(event) => toggleEditor(event)} className={`card-content ${getLessonType()}`}>
@@ -39,7 +42,7 @@ export const LessonCard = ({ lesson }) => {
         <div className="classroom">{lesson.classroom}</div>
         <div className="teacher">{lesson.teacher}</div>
       </div>
-      {editorOpened && <LessonEditor lesson={lesson} hideFunc={toggleEditor} mousePos={onCLickMousePos} />}
+      {editorOpened && <LessonPopUp lesson={lesson} hideFunc={toggleEditor} mousePos={onCLickMousePos} />}
     </div>
   );
 };

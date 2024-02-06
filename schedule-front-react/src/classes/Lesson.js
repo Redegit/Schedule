@@ -1,34 +1,114 @@
 export class Lesson {
 
-  transformDate = (date_str) => {
-    let date = new Date(date_str)
-    date.setHours(date.getHours() - 3)
-    return date
+  // transformDate = (date_str) => {
+  //   let date = new Date(date_str)
+  //   date.setHours(date.getHours() - 3)
+  //   return date
+  // }
+
+
+  getModule = () => {
+    for (let mod of modules) {
+      if (mod.disciplines.includes(this.name)) {
+        return mod.name
+      }
+    }
   }
 
-  constructor({ id, name, start_dt, end_dt, classroom, teacher_ref, type, subject_ref, lesson_number }) {
+  constructor({ id, discipline, date, beginLesson, endLesson, auditorium, lecturer_title, lecturer, kindOfWork, lessonNumberStart, building, lecturerEmail, replaces, stream }) {
     this.id = id;
-    this.name = name;
-    this.start_dt = this.transformDate(start_dt);
-    this.end_dt = this.transformDate(end_dt);
-    this.classroom = classroom;
-    this.teacher = teacher_ref;
-    this.type = type;
-    this.subject = subject_ref;
-    this.lesson_number = lesson_number;
+    this.name = discipline;
+    this.date = date;
+    this.startTime = beginLesson;
+    this.endTime = endLesson;
+    this.classroom = auditorium;
+    this.teacher = lecturer_title || lecturer;
+    this.type = kindOfWork;
+    this.subject = discipline;
+    this.number = lessonNumberStart;
+    this.building = building;
+    this.teacherEmail = lecturerEmail;
+    this.replaces = replaces;
+    this.stream = stream;
   }
 
   #transformTime = (date) => {
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${hours === 0 ? '00' : hours}:${minutes === 0 ? '00' : minutes}`
+    // const hours = date.getHours();
+    // const minutes = date.getMinutes();
+    // return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`
   }
 
   getStartTime = () => {
-    return this.#transformTime(this.start_dt)
+    return this.startTime
+    // return this.#transformTime(this.startTime)
   }
 
   getEndTime = () => {
-    return this.#transformTime(this.end_dt)
+    return this.endTime
+    // return this.#transformTime(this.endTime)
   }
 }
+
+export const modules = [
+  {
+    name: "Общие",
+    disciplines: [
+      "Иностранный язык в профессиональной сфере",
+      "Информационное право",
+      "Машинное обучение в семантическом и сетевом анализе",
+      "Программная инженерия",
+      "Бухгалтерские информационные системы"
+    ]
+  },
+  {
+    name: "ERP-системы",
+    disciplines: [
+      "Разработка корпоративных и облачных приложений",
+      "Корпоративные информационные системы"
+    ]
+  },
+  {
+    name: "Системное программирование",
+    disciplines: [
+      "Разработка эффективных вычислительных алгоритмов",
+      "Низкоуровневое программирование"
+    ]
+  },
+  {
+    name: "Управление разработкой",
+    disciplines: [
+      "Управление качеством программных систем",
+      "Проектирование информационных систем"
+    ]
+  },
+  {
+    name: "Технологии искусственного интеллекта",
+    disciplines: [
+      "Технологии и алгоритмы анализа сетевых моделей"
+    ]
+  },
+  {
+    name: "Языки и методы программирования",
+    disciplines: [
+      "Программирование в среде R"
+    ]
+  },
+  {
+    name: "Разработка распределенных приложений",
+    disciplines: [
+      "Основы технологий интернета вещей"
+    ]
+  },
+  {
+    name: "Технологии машинного обучения",
+    disciplines: [
+      "Оптимизационные задачи в машинном обучении"
+    ]
+  },
+  {
+    name: "Финтех",
+    disciplines: [
+      "Теоретические основы финансовых технологий"
+    ]
+  }
+]

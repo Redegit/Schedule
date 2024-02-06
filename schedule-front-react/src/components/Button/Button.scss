@@ -1,6 +1,6 @@
 @property --gradient-angle {
     syntax: "<angle>";
-    initial-value: 0deg;
+    initial-value: random($limit: 90) + deg;
     inherits: false;
 }
 
@@ -21,6 +21,7 @@
     isolation: isolate;
     width: fit-content;
     height: fit-content;
+    transition: scale 300ms;
 
     .neon {
         --animation-speed: 10s;
@@ -39,7 +40,7 @@
     .neon::before {
         content: '';
         position: absolute;
-        inset: -.1rem;
+        inset: -0.1rem;
         background-color: var(--clr-4);
         border-radius: inherit;
         z-index: -1;
@@ -69,8 +70,11 @@
 
     .neon:hover,
     .neon:focus-visible {
+        outline: none;
         --animation-speed: 2s;
     }
+}
 
-
+.button-container:hover {
+    scale: 1.05;
 }

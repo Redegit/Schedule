@@ -21,25 +21,42 @@
         position: fixed;
         transform-origin: center;
         opacity: 0;
-        // display: none;
-        // transform: translate(calc(var(--starting-x) / var(--scale-ratio)), calc(var(--starting-y) / var(--scale-ratio)));
 
         .data {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
 
             .row {
                 display: flex;
                 justify-content: space-between;
                 flex-direction: row;
                 align-items: center;
+                position: relative;
             }
+
+            .row::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -7px;
+                background-color: var(--border-color);
+                height: 1px;
+            }
+        }
+
+        .controls {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 
     .editor-window-show {
-        animation: window-appearance-animation 0.3s cubic-bezier(.7,0,.64,.88) forwards;
+        animation: window-appearance-animation 0.3s cubic-bezier(.7, 0, .64, .88) forwards;
         display: block;
         opacity: 1;
     }

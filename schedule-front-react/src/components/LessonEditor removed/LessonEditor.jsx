@@ -1,7 +1,9 @@
+// ОТ КОМПОНЕНТА ОТКАЗАЛСЯ
 import { useEffect, useState } from "react";
 import "./LessonEditor.scss"
 import { useRef } from "react";
 import { Button } from "../Button/Button";
+import { Dropdown } from "../Common/Dropdown/Dropdown";
 
 
 export const LessonEditor = ({ lesson, hideFunc, mousePos }) => {
@@ -14,7 +16,6 @@ export const LessonEditor = ({ lesson, hideFunc, mousePos }) => {
     const [xCenter, setXCenter] = useState(0)
     const [yCenter, setYCenter] = useState(0)
     const [windowCentered, setWindowCentered] = useState(false)
-
 
     const resetInputs = () => {
         document.querySelectorAll('.data input').forEach(input => input.value = input.defaultValue);
@@ -32,7 +33,8 @@ export const LessonEditor = ({ lesson, hideFunc, mousePos }) => {
     }
 
     const handleChange = (e) => {
-        setInputData({ ...inputData, [e.target.name]: e.target.value });
+        console.log(e);
+        // setInputData({ ...inputData, [e.target.name]: e.target.value });
     };
 
     useEffect(() => {
@@ -68,8 +70,20 @@ export const LessonEditor = ({ lesson, hideFunc, mousePos }) => {
         }
     }, [editorWindowRef]);
 
+    // const handleDrag = (e) => {
+    //     e.preventDefault();
+    //     // console.log(e);
+    //     if (editorWindowRef?.current && e.clientX !== 0 && e.clientY !== 0) {
+    //         const elWidth = editorWindowRef.current.offsetWidth;
+    //         const elHeight = editorWindowRef.current.offsetHeight;
 
+    //         let dragPosX = e.clientX;
+    //         let dragPosY = e.clientY;
 
+    //         setXCenter(dragPosX - elWidth / 2);
+    //         setYCenter(dragPosY - elHeight / 2);
+    //     }
+    // }
     return (
         <div className={`lesson-editor-container ${containerBackIsSolid ? 'lesson-editor-container-filled' : ''}`}>
             <div className="editor-hide-area" onClick={() => { hideFunc() }}></div>
@@ -100,6 +114,19 @@ export const LessonEditor = ({ lesson, hideFunc, mousePos }) => {
                     <div className="row">
                         <label>{`Окончание:`}</label>
                         <input title="Время конца пары" className="input" type="time" name="end_dt" defaultValue={lesson.getEndTime()} readOnly={!editable} onChange={handleChange} />
+                    </div>
+                    <div className="row">
+                        <label>{`Преподаватель:`}</label>
+                        {/* <input title="Ссылка на преподавателя" className="input" type="text" name="teacher" defaultValue={lesson.teacher} readOnly={!editable} onChange={handleChange} /> */}
+                        <Dropdown
+                            placeHolder='1'
+                            options={[
+                                { name: '1', value: "1" },
+                                { name: '2', value: "2" }
+                            ]}
+                            handleChoice={handleChange}
+                            active={editable}
+                        />
                     </div>
                 </div>
                 <div className="controls">

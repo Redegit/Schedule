@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from .models import Subject, Homework, TemplateLesson, Lesson, Teacher
 
 
@@ -31,6 +32,7 @@ class HomeworkSerializer(serializers.ModelSerializer):
         model = Homework
         fields = '__all__'
 
+
 class TemplateLessonJoinSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     name = serializers.CharField()
@@ -44,4 +46,4 @@ class TemplateLessonJoinSerializer(serializers.Serializer):
 
 
 class Meta:
-        fields = '__all__'
+    fields = '__all__'
