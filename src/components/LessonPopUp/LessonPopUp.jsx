@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import "./LessonPopUp.scss"
 import { useRef } from "react";
-import { Button } from "../Button/Button";
-import { Dropdown } from "../Common/Dropdown/Dropdown";
 
 
 export const LessonPopUp = ({ lesson, hideFunc, mousePos }) => {
