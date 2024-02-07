@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
 const port =3001;
@@ -16,6 +17,14 @@ app.use(express.static(path.join(__dirname, '..', 'build')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
+
+// Разрешаем запросы только с для dev-сервера
+const corsOptions = {
+  origin: 'http://localhost:3000',
+};
+
+// Middleware для обработки CORS
+app.use(cors(corsOptions));
 
 // Обработка запроса для проксирования
 app.get('/api/ruz', async (req, res) => {
