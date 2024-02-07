@@ -7,7 +7,7 @@ cache:
 
 before_script:
   - npm install
-  - npm build
+  - npm run build
   - mkdir public
   - cp build public
   - cp src/server.js public
