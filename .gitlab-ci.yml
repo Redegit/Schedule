@@ -1,18 +1,25 @@
 # The Docker image that will be used to build your app
 image: node:latest
 
+stages:
+  - build
+  - deploy
+
 cache:
   paths:
     - node_modules/
 
-before_script:
-  - npm install
-  - npm run build
-  - mkdir public
-  - cp build public
-  - cp src/server.js public
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+    - mkdir public
+    - cp build public
+    - cp src/server.js public
 
 pages:
+  stage: deploy
   script:
     - node public/server.js
   artifacts:
