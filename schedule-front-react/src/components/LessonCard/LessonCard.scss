@@ -13,11 +13,13 @@
         }
     }
 
-    .card-content {
+    .lesson {
         padding: 0.5rem;
         border-radius: 1rem;
         background-color: var(--bg-neutral);
-        border: 5px solid var(--border-color);
+        border: 4px solid var(--border-color);
+        --width-border: 4px;
+        border-width: var(--width-border);
         transition: transform 0.1s ease-out;
         cursor: pointer;
 
@@ -35,16 +37,32 @@
         }
     }
 
-    .card-content.sem {
+    .lesson:first-child:not(:only-child) {
+        border-bottom-width: calc(var(--width-border) / 2);
+        border-radius: 1rem 1rem 0 0;
+    }
+
+    .lesson:last-child:not(:only-child) {
+        border-top-width: calc(var(--width-border) / 2);
+        border-radius: 0 0 1rem 1rem;
+    }
+
+    .lesson:not(:first-child):not(:last-child) {
+        border-radius: 0;
+        // border-block: 0;
+        border-block-width: calc(var(--width-border) / 2);
+    }
+
+    .lesson.sem {
         border-color: var(--bg-sem);
     }
 
-    .card-content.lec {
+    .lesson.lec {
         border-color: var(--bg-lec);
     }
 
-    .card-content:hover,
-    .card-content:focus-visible {
+    .lesson:hover,
+    .lesson:focus-visible {
         transform: translateY(-2px) scale(1.05);
     }
 }

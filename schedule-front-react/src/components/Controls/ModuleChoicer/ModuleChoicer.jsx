@@ -38,7 +38,7 @@ const ModuleChoicer = ({ chosenModules, setChosenModules }) => {
         valueContainer: (styles) => ({ ...styles, overflow: "auto", height: "100%" }),
         singleValue: (styles, { data }) => ({ ...styles }),
         menu: (styles) => ({ ...styles, backgroundColor: "var(--bg-dark)" }),
-        multiValue: (styles) => ({ ...styles, backgroundColor: "var(--bg-black)" }),
+        multiValue: (styles) => ({ ...styles, backgroundColor: "var(--bg-neutral)" }),
         multiValueLabel: (styles) => ({ ...styles, color: "var(--font-light)" })
     };
 

@@ -15,8 +15,7 @@ export class Lesson {
     }
   }
 
-  constructor({ id, discipline, date, beginLesson, endLesson, auditorium, lecturer_title, lecturer, kindOfWork, lessonNumberStart, building, lecturerEmail, replaces, stream }) {
-    this.id = id;
+  constructor({ discipline, date, beginLesson, endLesson, auditorium, lecturer_title, lecturer, kindOfWork, lessonNumberStart, building, lecturerEmail, replaces, stream }) {
     this.name = discipline;
     this.date = date;
     this.startTime = beginLesson;

@@ -5,12 +5,14 @@ import { useState, useEffect } from 'react'
 import './Table.scss'
 import axios from "axios";
 import Controls from "../Controls/Controls";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
 export const Table = () => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [weekDates, setWeekDates] = useState([]);
     const [weekShift, setWeekShift] = useState(0);
+    const [loadingScreen, setLoadingScreen] = useState(true);
 
     const getSavedModules = () => {
         let selectedItems = JSON.parse(localStorage.getItem('chosenModules'));
@@ -33,12 +35,36 @@ export const Table = () => {
         return `${year}.${month}.${day}`
     }
 
+    useEffect(() => {
+        const filterByModules = (data) => {
+            return data.map(dow => dow.map(lessonGroup => lessonGroup.filter(lesson => chosenModules.includes(lesson?.getModule()))))
+        }
+
+        setFilteredData(() => filterByModules(data))
+    }, [data, chosenModules]);
+
+    const transformData = (data) => {
+        let newData = [[], [], [], [], [], [], []];
+
+        let prevLesson = { dayOfWeek: 0, lessonNumberStart: 0 }
+        for (let les of data) {
+            if (les.dayOfWeek === prevLesson.dayOfWeek && les.lessonNumberStart === prevLesson.lessonNumberStart) {
+                let nLessons = newData[les.dayOfWeek - 1].length
+                newData[les.dayOfWeek - 1][nLessons - 1].push(new Lesson(les))
+            } else {
+                newData[les.dayOfWeek - 1].push([new Lesson(les)])
+            }
+            prevLesson = les
+        }
+        return newData
+    }
+
     const fetchData = async (start_date, end_date) => {
         try {
             start_date = formatDateString(start_date);
             end_date = formatDateString(end_date);
 
-            const response = await axios.get(`http://127.0.0.1:8000/api/ruz/`, {
+            const response = await axios.get(`http://localhost:3001/api/ruz/`, {
                 params: {
                     start: start_date,
                     finish: end_date,
@@ -46,11 +72,11 @@ export const Table = () => {
                 }
             });
 
-            const data = response.data?.data;
-            const mappedData = data.map(les => new Lesson(les))
-            setData(mappedData);
+            const data = transformData(response.data?.data);
+            setData(data);
+            setLoadingScreen(() => false)
         } catch (error) {
-            console.error("Error fetching data:", error);
+            console.log(error.stack);
         }
     };
 
@@ -64,6 +90,7 @@ export const Table = () => {
             let new_date = new Date(tmp_date.setDate(tmp_date.getDate() + i - dayOW + weekShift * 7));
             weekDates_tmp.push(new_date);
         }
+        setLoadingScreen(() => true)
         fetchData(weekDates_tmp[0], weekDates_tmp[6])
         setWeekDates(weekDates_tmp);
     }, [weekShift])
@@ -79,15 +106,6 @@ export const Table = () => {
         }
     }
 
-    useEffect(() => {
-        const filterByModules = (data) => {
-            return data.filter(lesson => chosenModules.includes(lesson?.getModule()))
-        }
-
-        setFilteredData(() => filterByModules(data))
-    }, [data, chosenModules]);
-
-
     return (
         <div className="table_container">
             <Controls
@@ -99,22 +117,24 @@ export const Table = () => {
                     weekDates
                 }}
             />
-            <div className="table_body">
-                {weekDates && weekDates.map((day, index) => {
-                    return <div key={index} className="column border">
-                        <div className={`date ${compareDates(day, new Date()) ? 'date--current border' : ''}`}>{day.getDate()}</div>
-                        <div className="column--content">
-                            {filteredData && filteredData.map((les, index) => {
-                                if (compareDates(les.date, day)) {
-                                    return <LessonCard key={index} lesson={les} />
+            {loadingScreen ? <LoadingScreen />
+                : <div className="table_body">
+                    {weekDates && weekDates.map((day, index) => {
+                        return <div key={index} className="column border">
+                            <div className={`date ${compareDates(day, new Date()) ? 'date--current border' : ''}`}>{`${day.getDate()}`}</div>
+                            <div className="column--content">
+                                {filteredData[index] && filteredData[index].map((lessonGroup, index) => {
+                                    if (lessonGroup.length > 0) {
+                                        return <LessonCard key={index} lessonGroup={lessonGroup} />
+                                    }
                                 }
-                            }
-                            )}
+                                )}
+                            </div>
                         </div>
-                    </div>
-                }
-                )}
-            </div>
+                    })
+                    }
+                </div>
+            }
         </div>
     );
 }
