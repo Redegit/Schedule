@@ -5,10 +5,6 @@ cache:
   paths:
     - node_modules/
 
-stages:
-  - build
-  - run
-
 before_script:
   - npm install
   - npm build
