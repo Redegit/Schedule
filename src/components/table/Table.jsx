@@ -126,6 +126,8 @@ export const Table = () => {
                                 {filteredData[index] && filteredData[index].map((lessonGroup, index) => {
                                     if (lessonGroup.length > 0) {
                                         return <LessonCard key={index} lessonGroup={lessonGroup} />
+                                    } else {
+                                        return <></>
                                     }
                                 }
                                 )}
