@@ -54,6 +54,8 @@ const ModuleChoicer = ({ chosenModules, setChosenModules }) => {
                 styles={colourStyles}
                 defaultValue={chosenModules.map(module => { return { label: module, value: module } })}
                 onChange={(selected) => setChosenModules(() => selected.map(module => module.value))}
+                closeMenuOnSelect={false}
+                placeholder={"Выберите модули..."}
             />
         </div>
     );

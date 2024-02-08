@@ -4,7 +4,7 @@ const axios = require('axios');
 const cors = require('cors');
 
 const app = express();
-const port =3001;
+const port = 3001;
 
 // Middleware для обработки JSON и URL-encoded данных
 app.use(express.json());
@@ -18,9 +18,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
 
-// Разрешаем запросы только с для dev-сервера
+// Разрешаем запросы для dev-сервера
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: '*',
 };
 
 // Middleware для обработки CORS

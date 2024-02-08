@@ -14,25 +14,39 @@
         font-size: 2rem;
         color: var(--font-light);
     }
+}
 
-    .arrows {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+.arrows {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: var(--bg-dark);
+
+    .arrow {
+        font-size: 1.5rem;
+        height: 100%;
+        padding: .5rem;
+        transition: scale .2s, transform .2s;
+        cursor: pointer;
+        display: flex;
         align-items: center;
-        border-radius: 1rem;
-        overflow: hidden;
 
-        .arrow {
-            font-size: 1.5rem;
-            background-color: var(--bg-neutral);
-            padding: .5rem;
-            transition: scale .2s, transform .2s;
-            cursor: pointer;
+        &.left {
+            rotate: 180deg;
 
             &:hover {
                 scale: 1.1;
-                transform: translateY(-.2em);
+                transform: translateY(.2em);
             }
+        }
+
+        &:hover {
+            scale: 1.1;
+            transform: translateY(-.2em);
         }
     }
 }

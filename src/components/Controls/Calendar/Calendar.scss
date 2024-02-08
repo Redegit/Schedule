@@ -1,0 +1,9 @@
+.calendar {
+    background-color: var(--bg-dark);
+    box-sizing: border-box;
+    border-radius: 1rem;
+
+    * {
+        color: var(--font-light) !important;
+    }
+}

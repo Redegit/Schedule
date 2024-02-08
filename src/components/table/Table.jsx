@@ -6,6 +6,7 @@ import './Table.scss'
 import axios from "axios";
 import Controls from "../Controls/Controls";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import { capitalize } from "../Controls/WeekSelector/WeekSelector";
 
 export const Table = () => {
     const [data, setData] = useState([]);
@@ -64,7 +65,9 @@ export const Table = () => {
             start_date = formatDateString(start_date);
             end_date = formatDateString(end_date);
 
-            const response = await axios.get(`http://localhost:3001/api/ruz/`, {
+            // let url = `/api/ruz/` // для сборки
+            let url = `http://localhost:3001/api/ruz/`
+            const response = await axios.get(url, {
                 params: {
                     start: start_date,
                     finish: end_date,
@@ -76,7 +79,8 @@ export const Table = () => {
             setData(data);
             setLoadingScreen(() => false)
         } catch (error) {
-            console.log(error.stack);
+            // alert(error.stack); 
+            console.log(error);
         }
     };
 
@@ -121,13 +125,13 @@ export const Table = () => {
                 : <div className="table_body">
                     {weekDates && weekDates.map((day, index) => {
                         return <div key={index} className="column border">
-                            <div className={`date ${compareDates(day, new Date()) ? 'date--current border' : ''}`}>{`${day.getDate()}`}</div>
+                            <div className={`date ${compareDates(day, new Date()) ? 'date--current border' : ''}`}>{`${capitalize(day.toLocaleString('ru-RU', { weekday: 'short' }))}. ${day.getDate()}`}</div>
                             <div className="column--content">
                                 {filteredData[index] && filteredData[index].map((lessonGroup, index) => {
                                     if (lessonGroup.length > 0) {
                                         return <LessonCard key={index} lessonGroup={lessonGroup} />
                                     } else {
-                                        return <></>
+                                        return null
                                     }
                                 }
                                 )}

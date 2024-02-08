@@ -2,12 +2,14 @@ import ModuleChoicer from "./ModuleChoicer/ModuleChoicer";
 import { ThemeSwitcher } from "./ThemeSwitcher/ThemeSwitcher";
 import "./Controls.scss"
 import WeekSelector from "./WeekSelector/WeekSelector";
-const Controls = ({ chosenModules, setChosenModules, weekShift, setWeekShift, weekDates }) => {
+import Calendar from "./Calendar/Calendar";
+const Controls = ({ chosenModules, setChosenModules, setWeekShift, weekDates }) => {
     return (
         <div className="controls">
-            <ThemeSwitcher />
-            <WeekSelector {...{ weekShift, setWeekShift, weekDates }} />
+            <WeekSelector {...{ setWeekShift, weekDates }} />
+            {/* <Calendar /> */}
             <ModuleChoicer chosenModules={chosenModules} setChosenModules={setChosenModules} />
+            <ThemeSwitcher />
         </div>
     );
 }
