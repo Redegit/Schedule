@@ -44,6 +44,7 @@
 
 :root {
   @include common_colors();
+  font-size: 14px;
 }
 
 :root[data-theme=dark] {
@@ -148,19 +149,21 @@ input:read-only:focus {
 ::-webkit-scrollbar {
   width: 15px;
   height: 15px;
-  background-color: #ffffff00;
+  background-color: var(--bg-dark);
   border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 100px;
-  background-color: var(--bg-neutral);
+  background-color: var(--bg-dark);
   background-clip: content-box;
   border: 3px solid transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   border: 3px solid var(--border-color);
+  outline: 2px solid var(--bg-black);
+  outline-offset: -2px;
 }
 
 ::-webkit-scrollbar-track {
