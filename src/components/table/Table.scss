@@ -54,3 +54,9 @@
         }
     }
 }
+
+@container (min-width: 1000px) {
+    .table_container {
+        background-color: red;
+    }
+}

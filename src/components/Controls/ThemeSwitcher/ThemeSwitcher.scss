@@ -1,74 +1,74 @@
 .theme-switcher {
+  border-radius: 1rem;
+  // width: 3.5rem;
+  // height: 3.5rem;
+//   height: 100%;
+//   aspect-ratio: 1;
+  background-color: var(--bg-dark);
+  cursor: pointer;
+  display: flex;
+  position: inherit;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, scale 0.2s;
+
+  .theme-switcher-icon {
     border-radius: 100%;
-    width: 3.5rem;
-    height: 3.5rem;
-    aspect-ratio: 1;
-    background-color: var(--bg-dark);
-    cursor: pointer;
-    display: flex;
-    position: inherit;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s, scale 0.2s;
+    padding: 0;
 
+    path {
+      fill: none;
+      stroke: var(--font-gray);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1000000;
+      transition: 1s 0.5s, rotate 3s;
+      transform-origin: center;
+    }
+  }
 
-    .theme-switcher-icon {
-        border-radius: 100%;
-        padding: 0;
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
 
-        path {
-            fill: none;
-            stroke: var(--font-gray);
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 1000000;
-            transition: 1s 0.5s, rotate 3s;
-            transform-origin: center;
-        }
+  .moon {
+    .blur {
+      filter: blur(1px);
     }
 
-    svg {
-        width: 3rem;
-        height: 3rem;
+    path {
+      stroke-width: 10px;
+      stroke: var(--moon);
+    }
+  }
+
+  .sun {
+    .blur {
+      filter: blur(10px);
     }
 
-    .moon {
-        .blur {
-            filter: blur(1px);
-        }
-
-        path {
-            stroke-width: 10px;
-            stroke: var(--moon);
-        }
+    path {
+      stroke-width: 20px;
+      stroke-miterlimit: 10;
+      stroke: var(--sun);
     }
-
-    .sun {
-        .blur {
-            filter: blur(10px);
-        }
-
-        path {
-            stroke-width: 20px;
-            stroke-miterlimit: 10;
-            stroke: var(--sun);
-        }
-    }
+  }
 }
 
-.theme-switcher[data-theme=dark] .moon path {
-    stroke-dashoffset: -700;
-    transition: 1s;
-    rotate: 180deg;
+.theme-switcher[data-theme="dark"] .moon path {
+  stroke-dashoffset: -700;
+  transition: 1s;
+  rotate: 180deg;
 }
 
-.theme-switcher[data-theme=light] .sun path {
-    stroke-dashoffset: -2100;
-    transition: 1s;
-    rotate: -180deg;
+.theme-switcher[data-theme="light"] .sun path {
+  stroke-dashoffset: -2100;
+  transition: 1s;
+  rotate: -180deg;
 }
 
 .theme-switcher:hover,
 .theme-switcher:focus-visible {
-    scale: 1.05;
+  scale: 1.05;
 }

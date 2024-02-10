@@ -6,9 +6,10 @@
   // gap: 1rem;
   padding: 0.25rem 1rem;
   background-color: var(--bg-dark);
-  height: 3.5rem;
+  // height: 3.5rem;
   box-sizing: border-box;
   position: relative;
+  height: 100%;
 
   .dates {
     font-size: 2rem;
@@ -21,8 +22,8 @@
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;
+    gap: 0.2em;
     height: 100%;
-    gap: .2em;
 
     &:hover {
       //   scale: 1.05;
@@ -33,6 +34,13 @@
       height: 100%;
       fill: var(--font-light);
     }
+  }
+
+  .calendar-container {
+    // outline: 2px solid red;
+    position: absolute;
+    inset: 0;
+    left: -4em;
   }
 }
 

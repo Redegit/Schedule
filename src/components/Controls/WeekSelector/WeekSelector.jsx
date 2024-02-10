@@ -22,21 +22,6 @@ const WeekSelector = ({ setWeekShift, weekDates }) => {
 
   return (
     <>
-      <div className="arrows border">
-        <Arrow
-          className="arrow left"
-          onClick={() => {
-            setWeekShift((weekShift) => weekShift - 1);
-          }}
-        />
-        <Arrow
-          className="arrow right"
-          onClick={() => {
-            setWeekShift((weekShift) => weekShift + 1);
-          }}
-        />
-      </div>
-
       <div className="week-selector border">
         {weekDates && weekDates[0] && (
           <div
@@ -54,6 +39,22 @@ const WeekSelector = ({ setWeekShift, weekDates }) => {
             <Calendar setWeekShift={setWeekShift} weekDates={weekDates} />
           </div>
         )}
+      </div>
+
+      
+      <div className="arrows border">
+        <Arrow
+          className="arrow left"
+          onClick={() => {
+            setWeekShift((weekShift) => weekShift - 1);
+          }}
+        />
+        <Arrow
+          className="arrow right"
+          onClick={() => {
+            setWeekShift((weekShift) => weekShift + 1);
+          }}
+        />
       </div>
     </>
   );

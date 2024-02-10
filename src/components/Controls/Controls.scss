@@ -1,7 +1,14 @@
 .controls {
     display: grid;
     margin-bottom: 1rem;
-    grid-template-columns: max-content max-content 1fr max-content;
+    // grid-template-columns: max-content 1fr max-content max-content;
+    grid-template-columns: repeat(4, max-content);
     align-items: center;
     gap: 1rem;
+    align-items: stretch;
+    max-width: 100svw;
+    justify-content: space-between;
+    position: relative;
+    isolation: isolate;
+    z-index: 5;
 }

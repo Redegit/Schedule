@@ -45,6 +45,7 @@
 :root {
   @include common_colors();
   font-size: 14px;
+  font-size: clamp(10px, 1.25vw, 14px);
 }
 
 :root[data-theme=dark] {
