@@ -4,13 +4,13 @@ import "./LoadingScreen.scss";
 const LoadingScreen = ({ status }) => {
   if (status === "loading") {
     return (
-      <div className={`loading-screen`}>
+      <div className={`loading-screen border`}>
         <CircularProgress />
       </div>
     );
   } else {
     return (
-      <div className={`loading-screen error`}>
+      <div className={`loading-screen error border`}>
         <Error />
         {"Ошибка"}
       </div>
