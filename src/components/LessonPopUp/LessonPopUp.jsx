@@ -46,7 +46,8 @@ export const LessonPopUp = ({ lesson, hideFunc, mousePos }) => {
   }, [popupWindowRef]);
 
   return (
-    <div
+    <span
+      open={true}
       className={`lesson-popup-container ${
         containerBackIsSolid ? "lesson-popup-container-filled" : ""
       }`}
@@ -95,7 +96,7 @@ export const LessonPopUp = ({ lesson, hideFunc, mousePos }) => {
           <Record label={"Модуль"} value={lesson.getModule()} />
         </div>
       </div>
-    </div>
+    </span>
   );
 };
 

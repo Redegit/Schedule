@@ -37,17 +37,17 @@
         }
     }
 
-    .lesson:first-child:not(:only-child) {
+    .lesson:first-of-type:not(:only-of-type) {
         border-bottom-width: calc(var(--width-border) / 2);
         border-radius: 1rem 1rem 0 0;
     }
 
-    .lesson:last-child:not(:only-child) {
+    .lesson:last-of-type:not(:only-of-type) {
         border-top-width: calc(var(--width-border) / 2);
         border-radius: 0 0 1rem 1rem;
     }
 
-    .lesson:not(:first-child):not(:last-child) {
+    .lesson:not(:first-of-type):not(:last-of-type) {
         border-radius: 0;
         // border-block: 0;
         border-block-width: calc(var(--width-border) / 2);
