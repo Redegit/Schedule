@@ -61,6 +61,14 @@
         border-color: var(--bg-lec);
     }
 
+    .lesson.test {
+        border-color: var(--bg-test);
+    }
+
+    .lesson.exam {
+        border-color: var(--bg-exam);
+    }
+
     .lesson:hover,
     .lesson:focus-visible {
         transform: translateY(-2px) scale(1.05);

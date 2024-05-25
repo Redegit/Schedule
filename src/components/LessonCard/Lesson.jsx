@@ -17,8 +17,10 @@ const Lesson = ({ lesson }) => {
             case "Практические (семинарские) занятия": return "sem";
             case "Лекции": return "lec";
             case "Экзамен": return "exam";
+            case "Экзамены": return "exam";
             case "Повторная промежуточная аттестация (экзамен)": return "exam";
             case "Зачет": return "test";
+            case "Семинар+зачет": return "test";
             case "Повторная промежуточная аттестация (зачет)": return "test";
             case "Военная подготовка": return "mil";
             default: return ""
