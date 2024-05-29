@@ -2,14 +2,24 @@ import Select from "react-select";
 import { modules } from "../../../classes/Lesson";
 import { useEffect, useRef, useState } from "react";
 import "./ModuleChoicer.scss";
+import IncludeOtherModulesCheckbox from "../IncludeOtherModulesCheckbox/IncludeOtherModulesCheckbox";
 
-const ModuleChoicer = ({ chosenModules, setChosenModules }) => {
+const ModuleChoicer = ({
+  chosenModules,
+  setChosenModules,
+  includeOtherModules,
+  setIncludeOtherModules,
+}) => {
   return (
     <>
       <div className="module-choicer">
         <Selector
           chosenModules={chosenModules}
           setChosenModules={setChosenModules}
+        />
+        <IncludeOtherModulesCheckbox
+          includeOtherModules={includeOtherModules}
+          setIncludeOtherModules={setIncludeOtherModules}
         />
       </div>
 
@@ -85,7 +95,7 @@ const Selector = ({ chosenModules, setChosenModules }) => {
       borderColor: "var(--border-color)",
       cursor: "pointer",
       height: "3.5rem",
-      borderRadius: "1rem",
+      borderRadius: "1rem 0 0 1rem",
       overflow: "hidden",
     }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {

@@ -24,7 +24,19 @@ export const Table = () => {
     }
   };
 
+  const getIncludeOtherModules = () => {
+    let savedValue = JSON.parse(localStorage.getItem("includeOtherModules"));
+    if (typeof savedValue === "boolean") {
+      return savedValue;
+    } else {
+      return false;
+    }
+  };
+
   const [chosenModules, setChosenModules] = useState(getSavedModules());
+  const [includeOtherModules, setIncludeOtherModules] = useState(
+    getIncludeOtherModules()
+  );
 
   const formatDateString = (date) => {
     let year = `${date.getFullYear()}`;
@@ -38,16 +50,24 @@ export const Table = () => {
   useEffect(() => {
     const filterByModules = (data) => {
       return data.map((dow) =>
-        dow.map((lessonGroup) =>
-          lessonGroup.filter((lesson) =>
-            chosenModules.includes(lesson?.getModule())
-          )
-        )
+        dow.map((lessonGroup) => {
+          if (includeOtherModules) {
+            return lessonGroup.map((lesson) =>
+              chosenModules.includes(lesson?.getModule())
+                ? lesson
+                : lesson.setIsFromOtherModule()
+            );
+          } else {
+            return lessonGroup.filter((lesson) =>
+              chosenModules.includes(lesson?.getModule())
+            );
+          }
+        })
       );
     };
 
     setFilteredData(() => filterByModules(data));
-  }, [data, chosenModules]);
+  }, [data, chosenModules, includeOtherModules]);
 
   const transformData = (data) => {
     let newData = [[], [], [], [], [], [], []];
@@ -132,6 +152,8 @@ export const Table = () => {
           weekShift,
           setWeekShift,
           weekDates,
+          includeOtherModules,
+          setIncludeOtherModules,
         }}
       />
       {loadingStatus === "error" || loadingStatus === "loading" ? (

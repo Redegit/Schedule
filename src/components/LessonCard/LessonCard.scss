@@ -69,6 +69,11 @@
         border-color: var(--bg-exam);
     }
 
+    .lesson.other-module {
+        border-style: dashed;
+        filter: brightness(0.8);
+    }
+
     .lesson:hover,
     .lesson:focus-visible {
         transform: translateY(-2px) scale(1.05);

@@ -2,15 +2,15 @@
   border-radius: 1rem;
   // width: 3.5rem;
   // height: 3.5rem;
-//   height: 100%;
-//   aspect-ratio: 1;
+  //   height: 100%;
+  //   aspect-ratio: 1;
   background-color: var(--bg-dark);
   cursor: pointer;
   display: flex;
   position: inherit;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s, scale 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 
   .theme-switcher-icon {
     border-radius: 100%;
@@ -70,5 +70,6 @@
 
 .theme-switcher:hover,
 .theme-switcher:focus-visible {
-  scale: 1.05;
+  // scale: 1.1;
+  transform: translateY(-0.1em);
 }
