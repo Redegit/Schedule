@@ -29,8 +29,9 @@ export const Table = () => {
     if (typeof savedValue === "boolean") {
       return savedValue;
     } else {
+      setIncludeOtherModules(false);
       return false;
-    }
+    } 
   };
 
   const [chosenModules, setChosenModules] = useState(getSavedModules());

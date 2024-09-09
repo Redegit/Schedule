@@ -12,7 +12,14 @@ const Controls = ({
 }) => {
   return (
     <div className="controls">
-      <Sidebar />
+      <Sidebar
+        {...{
+          chosenModules,
+          setChosenModules,
+          includeOtherModules,
+          setIncludeOtherModules,
+        }}
+      />
       {/* 
       <ModuleChoicer
         chosenModules={chosenModules}

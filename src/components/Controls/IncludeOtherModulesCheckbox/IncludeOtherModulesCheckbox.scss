@@ -1,28 +1,26 @@
 .include-other-modules {
-  // font-size: 1.2rem;
   display: flex;
   flex-direction: row;
   gap: 1rem;
   align-items: center;
   width: fit-content;
   box-sizing: border-box;
-  padding: 0.25rem 1rem;
-  border-radius: 0 1rem 1rem 0;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
   background-color: var(--bg-dark);
   cursor: pointer;
-  border-left: none;
 
   span {
     display: block;
-    overflow-wrap: break-word;
-    max-width: 12ch;
+    // overflow-wrap: break-word;
+    text-wrap: nowrap;
+    // max-width: 12ch;
     user-select: none;
     transition: transform 0.2s;
+    line-height: 1em;
   }
 
-  &:hover > *,
-  &:focus-visible > * {
-    // scale: 1.1;
-    transform: translateY(-0.1em);
+  input {
+    --size: 1.2rem;
   }
 }

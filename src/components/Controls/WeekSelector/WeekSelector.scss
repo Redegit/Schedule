@@ -14,13 +14,13 @@
     box-sizing: border-box;
     position: relative;
     height: 100%;
+    cursor: pointer;
 
     .dates {
-      font-size: 2rem;
+      font-size: 1.5em;
       color: var(--font-light);
       user-select: none;
       transition: scale 0.2s, transform 0.2s;
-      cursor: pointer;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -31,12 +31,14 @@
 
       &:hover {
         //   scale: 1.05;
-        transform: translateY(-0.1em);
+        // transform: translateY(-0.1em);
       }
 
       .calendar-icon {
         height: 100%;
         fill: var(--font-light);
+        aspect-ratio: 1;
+        height: 2em;
       }
     }
 
@@ -44,7 +46,7 @@
       // outline: 2px solid red;
       position: absolute;
       inset: 0;
-      left: -4em;
+      left: -10em;
     }
   }
 
@@ -72,13 +74,13 @@
 
         &:hover {
           // scale: 1.1;
-          transform: translateY(0.1em);
+          // transform: translateY(0.1em);
         }
       }
 
       &:hover {
         //   scale: 1.1;
-        transform: translateY(-0.1em);
+        // transform: translateY(-0.1em);
       }
     }
   }

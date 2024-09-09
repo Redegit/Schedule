@@ -1,14 +1,15 @@
 .sidebar {
   isolation: isolate;
   z-index: 2;
+  // position: relative;
 
   .hamburger-react {
-    z-index: 2;
+    z-index: 3;
     position: fixed;
   }
 
   .sidebar-body {
-    background: var(--bg-dark);
+    background: var(--bg-black);
     transition: background-color 0.2s;
     box-sizing: border-box;
     position: fixed;
@@ -16,51 +17,69 @@
     bottom: 0;
     min-width: 300px;
     left: -100%;
-    z-index: 1;
+    z-index: 2;
     padding: 1rem;
     padding-top: 8rem;
 
-    .module-list-title {
-      text-align: center;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .module-list {
+    .module-choicer {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 1em;
 
-      .module-list-item {
+      .module-list-title {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+
+      .module-list {
         display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        border-radius: 0.5rem;
-        transition: background-color 100ms;
-        user-select: none;
+        flex-direction: column;
+        gap: 0.5rem;
 
-        &:hover {
-            background-color: var(--bg-neutral);
-        }
+        .module-list-item {
+          background-color: var(--bg-dark);
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+          align-items: center;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          border-radius: 0.5rem;
+          // transition: background-color 100ms;
+          user-select: none;
 
-        input {
-            width: 1.5rem;
+          // &:hover {
+            // background-color: var(--bg-neutral);
+          // }
+
+          input {
+            --size: 1.2rem;
             cursor: pointer;
 
             &::after {
             }
+          }
+        }
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+        button {
+          // padding: 1em;
+          font-size: 1rem;
+          width: fit-content;
         }
       }
     }
 
     .theme-switcher {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-      }
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
   }
 
   &[aria-expanded="true"] .sidebar-body {
@@ -81,6 +100,6 @@
     z-index: 0;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
+    // backdrop-filter: blur(2px);
   }
 }

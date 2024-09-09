@@ -22,12 +22,12 @@ const WeekSelector = ({ setWeekShift, weekDates }) => {
 
   return (
     <div className="controls-right">
-      <div className="week-selector border">
+      <div
+        className="week-selector hover border"
+        onClick={() => setCalendarOpened((val) => !val)}
+      >
         {weekDates && weekDates[0] && (
-          <div
-            className="dates"
-            onClick={() => setCalendarOpened((val) => !val)}
-          >
+          <div className="dates">
             {`${capitalize(
               weekDates[0].toLocaleString("ru", { month: "long" })
             )} ${weekDates[0].getDate()}-${weekDates[6].getDate()}`}
@@ -43,13 +43,13 @@ const WeekSelector = ({ setWeekShift, weekDates }) => {
 
       <div className="arrows border">
         <Arrow
-          className="arrow left"
+          className="arrow left hover"
           onClick={() => {
             setWeekShift((weekShift) => weekShift - 1);
           }}
         />
         <Arrow
-          className="arrow right"
+          className="arrow right hover"
           onClick={() => {
             setWeekShift((weekShift) => weekShift + 1);
           }}

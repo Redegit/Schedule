@@ -1,10 +1,15 @@
 import Hamburger from "hamburger-react";
 import { useState } from "react";
 import "./Sidebar.scss";
-import { modules } from "../../../classes/Lesson";
 import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
+import ModuleChoicer from "../ModuleChoicer/ModuleChoicer";
 
-const Sidebar = () => {
+const Sidebar = ({
+  chosenModules,
+  setChosenModules,
+  includeOtherModules,
+  setIncludeOtherModules,
+}) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -14,28 +19,14 @@ const Sidebar = () => {
       {isOpen && (
         <>
           <div className="sidebar-body border" aria-hidden={!isOpen}>
-            <div className="module-choicer">
-              <h3 className="module-list-title bottom-line">Выбор модулей</h3>
-              <div className="module-list">
-                {modules &&
-                  modules.map((module, index) => (
-                    <label
-                      htmlFor={`module-choice-checkbox-${index}`}
-                      className="module-list-item border"
-                    >
-                      <input
-                        className="module-checkbox"
-                        type="checkbox"
-                        name={module.name}
-                        id={`module-choice-checkbox-${index}`}
-                      />
-                      <span className="module-name">{module.name}</span>
-                    </label>
-                  ))}
-              </div>
-              <button className="apply" type="button"></button>
-            </div>
-
+            <ModuleChoicer
+              {...{
+                chosenModules,
+                setChosenModules,
+                includeOtherModules,
+                setIncludeOtherModules,
+              }}
+            />
             <ThemeSwitcher />
           </div>
           <div
