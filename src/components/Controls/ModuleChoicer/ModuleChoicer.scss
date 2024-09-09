@@ -44,7 +44,7 @@
   width: 100%;
   border-radius: 1rem;
   z-index: 1000;
-  
+
   .expand-button {
     display: none;
   }
@@ -63,4 +63,8 @@
 .module-choicer {
   display: flex;
   flex-direction: row;
+
+  // & > * {
+    // width: clamp(100px, 20rem, 500px);
+  // }
 }

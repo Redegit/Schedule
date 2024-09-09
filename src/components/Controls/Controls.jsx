@@ -1,7 +1,7 @@
 import ModuleChoicer from "./ModuleChoicer/ModuleChoicer";
-import { ThemeSwitcher } from "./ThemeSwitcher/ThemeSwitcher";
 import "./Controls.scss";
 import WeekSelector from "./WeekSelector/WeekSelector";
+import Sidebar from "./Sidebar/Sidebar";
 const Controls = ({
   chosenModules,
   setChosenModules,
@@ -12,13 +12,14 @@ const Controls = ({
 }) => {
   return (
     <div className="controls">
-      <ThemeSwitcher />
+      <Sidebar />
+      {/* 
       <ModuleChoicer
         chosenModules={chosenModules}
         setChosenModules={setChosenModules}
         includeOtherModules={includeOtherModules}
         setIncludeOtherModules={setIncludeOtherModules}
-      />
+      /> */}
       <WeekSelector {...{ setWeekShift, weekDates }} />
     </div>
   );

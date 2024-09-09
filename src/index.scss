@@ -92,6 +92,20 @@ code {
   border: 1px solid var(--border-color);
 }
 
+.bottom-line {
+  position: relative;
+}
+
+.bottom-line::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
 .input {
   font-size: 1rem;
   width: 70%;
@@ -170,4 +184,39 @@ input:read-only:focus {
 ::-webkit-scrollbar-track {
   background-color: var(--bg-black);
   border-radius: 100px;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  color: var(--font-light);
+}
+
+input[type="checkbox"] {
+  aspect-ratio: 1;
+  height: 50%;
+  margin: 0;
+  transition: transform 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 0.15em solid var(--font-light);
+  border-radius: 0.2rem;
+  // display: grid;
+  position: relative;
+  // place-content: center;
+
+
+  &::before {
+      content: "";
+      scale: 0;
+      inset: 10%;
+      position: absolute;
+      background-color: var(--clr-accent-secondary);
+      border-radius: calc(0.2rem / 2);
+      transition: scale 0.1s ease-in-out;
+    }
+
+    &:checked::before {
+      scale: 1;
+    }
 }

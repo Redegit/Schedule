@@ -21,7 +21,7 @@ const WeekSelector = ({ setWeekShift, weekDates }) => {
   }, []);
 
   return (
-    <>
+    <div className="controls-right">
       <div className="week-selector border">
         {weekDates && weekDates[0] && (
           <div
@@ -41,7 +41,6 @@ const WeekSelector = ({ setWeekShift, weekDates }) => {
         )}
       </div>
 
-      
       <div className="arrows border">
         <Arrow
           className="arrow left"
@@ -56,7 +55,7 @@ const WeekSelector = ({ setWeekShift, weekDates }) => {
           }}
         />
       </div>
-    </>
+    </div>
   );
 };
 

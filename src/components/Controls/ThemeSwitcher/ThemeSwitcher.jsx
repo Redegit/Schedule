@@ -22,7 +22,7 @@ export const ThemeSwitcher = () => {
 
     return (
         <>
-            <button onClick={toggleTheme} className="theme-switcher border" data-theme={theme}>
+            <button onClick={toggleTheme} className="theme-switcher" data-theme={theme}>
                 <svg className="theme-switcher-icon">
                     <svg className="moon" viewBox="15 0 250 250">
                         <Moon />
