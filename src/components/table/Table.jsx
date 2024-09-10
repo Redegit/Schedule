@@ -45,7 +45,7 @@ export const Table = () => {
           if (includeOtherModules) {
             return lessonGroup.map((lesson) =>
               chosenModules.includes(lesson?.getModule())
-                ? lesson
+                ? lesson.setNotFromOtherModule()
                 : lesson.setIsFromOtherModule()
             );
           } else {

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { LessonPopUp } from "../LessonPopUp/LessonPopUp";
 
-// FIXME не обновляются стили карточек при добавления модулей (остается класс other-module). При убирании все работает 
 const LessonBody = ({ lesson }) => {
   const [editorOpened, setEditorOpened] = useState(false);
   const [onCLickMousePos, setOnclickMousePos] = useState({ x: 0, y: 0 });

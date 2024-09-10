@@ -66,6 +66,9 @@ export class Lesson {
     this.fromOtherModule = true;
     return this;
   };
+
+  setNotFromOtherModule = () => {
+    this.fromOtherModule = false;
+    return this;
+  };
 }
-
-
