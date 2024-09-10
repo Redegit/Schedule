@@ -94,6 +94,7 @@ export const LessonPopUp = ({ lesson, hideFunc, mousePos }) => {
           <Record label={"Поток"} value={lesson.stream} />
           <Record label={"Замены"} value={lesson.replaces} />
           <Record label={"Модуль"} value={lesson.getModule()} />
+          <Record label={"Группа"} value={lesson.group} />
         </div>
       </div>
     </span>

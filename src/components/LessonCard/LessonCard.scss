@@ -26,6 +26,8 @@
 
         .title {
             font-size: 1.1em;
+            margin-bottom: 0.5em;
+            line-height: 1.1em;
         }
 
         .classroom,
@@ -80,3 +82,10 @@
         transform: translateY(-2px) scale(1.05);
     }
 }
+
+@media screen and (max-width: 400px) {
+    .lesson-card .lesson {
+      padding-block: 1.5rem;
+      padding-inline: 1rem;
+    }
+  }

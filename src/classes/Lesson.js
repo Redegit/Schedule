@@ -29,6 +29,7 @@ export class Lesson {
     lecturerEmail,
     replaces,
     stream,
+    group
   }) {
     this.name = discipline;
     this.date = date;
@@ -44,6 +45,7 @@ export class Lesson {
     this.replaces = replaces;
     this.stream = stream;
     this.fromOtherModule = false;
+    this.group = group;
   }
 
   #transformTime = (date) => {
