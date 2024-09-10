@@ -49,7 +49,7 @@
 :root {
   @include common_colors();
   font-size: 14px;
-  font-size: clamp(10px, 1.25vw, 14px);
+  font-size: clamp(8px, 1.25vw, 14px);
 }
 
 :root[data-theme="dark"] {
@@ -113,7 +113,7 @@ code {
 .line {
   height: 1px;
   background-color: var(--border-color);
-  width: 100%;   
+  width: 100%;
 }
 
 .input {
@@ -254,13 +254,14 @@ input[type="checkbox"] {
   @include hover_effect();
 }
 
-button {
+button,
+.btn {
   @include border();
   @include hover_effect();
   font-size: 1em;
   margin: 0;
   padding: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 1rem;
   cursor: pointer;
   background-color: var(--bg-dark);
   color: var(--font-light);
@@ -268,4 +269,9 @@ button {
 
 label:has(input[type="checkbox"]) {
   @include hover_effect();
+}
+
+.blackout {
+  background-color: var(--bg-blackout);
+  backdrop-filter: blur(3px);
 }

@@ -49,7 +49,7 @@ export const LessonPopUp = ({ lesson, hideFunc, mousePos }) => {
     <span
       open={true}
       className={`lesson-popup-container ${
-        containerBackIsSolid ? "lesson-popup-container-filled" : ""
+        containerBackIsSolid ? "blackout" : ""
       }`}
     >
       <div

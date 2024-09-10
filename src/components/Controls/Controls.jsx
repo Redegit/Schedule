@@ -1,25 +1,10 @@
-import ModuleChoicer from "./ModuleChoicer/ModuleChoicer";
 import "./Controls.scss";
 import WeekSelector from "./WeekSelector/WeekSelector";
 import Sidebar from "./Sidebar/Sidebar";
-const Controls = ({
-  chosenModules,
-  setChosenModules,
-  setWeekShift,
-  weekDates,
-  includeOtherModules,
-  setIncludeOtherModules,
-}) => {
+const Controls = ({ setWeekShift, weekDates }) => {
   return (
     <div className="controls">
-      <Sidebar
-        {...{
-          chosenModules,
-          setChosenModules,
-          includeOtherModules,
-          setIncludeOtherModules,
-        }}
-      />
+      <Sidebar />
       {/* 
       <ModuleChoicer
         chosenModules={chosenModules}

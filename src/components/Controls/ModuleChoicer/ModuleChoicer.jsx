@@ -1,14 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import "./ModuleChoicer.scss";
-import { modules } from "../../../classes/Lesson";
+import { modules } from "../../../classes/Data";
 import IncludeOtherModulesCheckbox from "../IncludeOtherModulesCheckbox/IncludeOtherModulesCheckbox";
+import { useGlobalContext } from "../../../hook/useGlobalContext";
 
-const ModuleChoicer = ({
-  chosenModules,
-  setChosenModules,
-  includeOtherModules,
-  setIncludeOtherModules,
-}) => {
+const ModuleChoicer = () => {
+  const {
+    chosenModules,
+    setChosenModules,
+    includeOtherModules,
+    setIncludeOtherModules,
+  } = useGlobalContext();
+
   const handleCheckboxClick = async (e) => {
     const name = e.target.name;
     if (e.target.checked === true) {
@@ -23,6 +26,10 @@ const ModuleChoicer = ({
     }
   };
 
+  useEffect(() => {
+    localStorage.setItem("chosenModules", JSON.stringify(chosenModules));
+  }, [chosenModules]);
+
   return (
     <div className="module-choicer">
       <h3 className="module-list-title bottom-line">Выбор модулей</h3>
@@ -31,6 +38,7 @@ const ModuleChoicer = ({
           modules.map((module, index) => (
             <label
               htmlFor={`module-choice-checkbox-${index}`}
+              key={index}
               className="module-list-item border"
             >
               <input
