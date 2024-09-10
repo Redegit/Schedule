@@ -3,6 +3,7 @@
   flex-direction: row;
 
   .week-selector {
+    -webkit-tap-highlight-color: transparent;
     border-radius: 1rem 0 0 1rem;
     // display: grid;
     // align-items: center;
@@ -61,6 +62,7 @@
     background-color: var(--bg-dark);
 
     .arrow {
+      -webkit-tap-highlight-color: transparent;
       font-size: 1.5rem;
       height: 100%;
       padding: 0.5rem;
