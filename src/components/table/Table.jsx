@@ -49,9 +49,9 @@ export const Table = () => {
                 : lesson.setIsFromOtherModule()
             );
           } else {
-            return lessonGroup.filter((lesson) =>
-              chosenModules.includes(lesson?.getModule())
-            );
+            return lessonGroup
+              .filter((lesson) => chosenModules.includes(lesson?.getModule()))
+              .map((lesson) => lesson.setNotFromOtherModule());
           }
         })
       );
