@@ -8,18 +8,18 @@ const SidebarToggle = ({ toggled, toggle }) => {
       className="sidebar-toggle btn"
     >
       <div className="arrow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22">
           <path
             fill="var(--bg-light)"
-            d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"
+            d="M6.9395 4.707 14.2325 12 6.9395 19.293 8.3535 20.707 17.0605 12 8.3535 3.293 6.9395 4.707Z"
           />
         </svg>
       </div>
       <div className="arrow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22">
           <path
             fill="var(--bg-light)"
-            d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"
+            d="M6.9395 4.707 14.2325 12 6.9395 19.293 8.3535 20.707 17.0605 12 8.3535 3.293 6.9395 4.707Z"
           />
         </svg>
       </div>

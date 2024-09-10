@@ -273,5 +273,5 @@ label:has(input[type="checkbox"]) {
 
 .blackout {
   background-color: var(--bg-blackout);
-  backdrop-filter: blur(3px);
+  // backdrop-filter: blur(1px);
 }
