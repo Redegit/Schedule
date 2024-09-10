@@ -61,3 +61,9 @@
     }
   }
 }
+
+@media screen and (max-width: 425px) {
+  .table_container .table_body {
+    grid-template-columns: 1fr;
+  }
+}
