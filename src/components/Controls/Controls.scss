@@ -1,8 +1,8 @@
 .controls {
     display: grid;
-    margin-bottom: 1rem;
+    grid-template-columns: repeat(2, min-content);
     // grid-template-columns: max-content 1fr max-content max-content;
-    grid-template-columns: repeat(4, max-content);
+    margin-bottom: 1rem;
     align-items: center;
     gap: 1rem;
     align-items: stretch;

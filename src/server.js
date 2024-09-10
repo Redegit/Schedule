@@ -32,9 +32,14 @@ const groupAliases = {
   "ПИ21-2": 110809,
 };
 
+let countQueries = 0;
+
 // Обработка запроса для проксирования
 app.get("/api/ruz", async (req, res) => {
   try {
+    countQueries++;
+    console.log(countQueries);
+    
     const targetUrl =
       "https://ruz.fa.ru/api/schedule/group/" + groupAliases["ПИ21-5"];
     const startDate = req.query.start || "";

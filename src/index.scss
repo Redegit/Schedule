@@ -49,7 +49,7 @@
 :root {
   @include common_colors();
   font-size: 14px;
-  font-size: clamp(10px, 1.25vw, 14px);
+  font-size: clamp(9px, 1.25vw, 14px);
 }
 
 :root[data-theme="dark"] {
@@ -88,8 +88,32 @@ code {
     monospace;
 }
 
-.border {
+@mixin border {
   border: 1px solid var(--border-color);
+}
+
+.border {
+  @include border();
+}
+
+.bottom-line {
+  position: relative;
+}
+
+.bottom-line::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.line {
+  height: 1px;
+  background-color: var(--border-color);
+  width: 100%;
 }
 
 .input {
@@ -170,4 +194,84 @@ input:read-only:focus {
 ::-webkit-scrollbar-track {
   background-color: var(--bg-black);
   border-radius: 100px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--bg-black);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  color: var(--font-light);
+}
+
+input[type="checkbox"] {
+  --size: 1rem;
+  height: var(--size);
+  width: var(--size);
+  aspect-ratio: 1;
+  // height: 50%;
+  margin: 0;
+  transition: transform 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: calc(var(--size) / 10) solid var(--font-light);
+  border-radius: 0.2rem;
+  // display: grid;
+  position: relative;
+  // place-content: center;
+
+  &::before {
+    content: "";
+    scale: 0;
+    inset: 10%;
+    position: absolute;
+    transform-origin: center;
+    background-color: var(--clr-accent-secondary);
+    border-radius: calc(0.2rem / 2);
+    transition: scale 0.1s ease-in-out;
+  }
+
+  &:checked::before {
+    scale: 1;
+  }
+}
+
+@mixin hover_effect {
+  transition: background-color 100ms;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--bg-neutral) !important;
+  }
+}
+
+.hover {
+  @include hover_effect();
+}
+
+button,
+.btn {
+  @include border();
+  @include hover_effect();
+  font-size: 1em;
+  margin: 0;
+  padding: 0.5em;
+  border-radius: 1rem;
+  cursor: pointer;
+  background-color: var(--bg-dark);
+  color: var(--font-light);
+}
+
+label:has(input[type="checkbox"]) {
+  @include hover_effect();
+}
+
+.blackout {
+  background-color: var(--bg-blackout);
+  // backdrop-filter: blur(1px);
 }

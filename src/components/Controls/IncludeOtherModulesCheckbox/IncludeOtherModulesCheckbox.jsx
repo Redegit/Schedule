@@ -18,6 +18,7 @@ const IncludeOtherModulesCheckbox = ({
 
   return (
     <label className="include-other-modules border">
+      <span htmlFor="includeOtherModules">Показывать чужие модули</span>
       <input
         onChange={handleCheckboxChange}
         type="checkbox"
@@ -25,7 +26,6 @@ const IncludeOtherModulesCheckbox = ({
         id="includeOtherModules"
         checked={includeOtherModules}
       />
-      <span htmlFor="includeOtherModules">Показывать чужие</span>
     </label>
   );
 };

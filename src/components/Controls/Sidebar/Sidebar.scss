@@ -1,0 +1,102 @@
+.sidebar {
+  isolation: isolate;
+  z-index: 2;
+  position: relative;
+
+  .sidebar-toggle {
+    z-index: 3;
+  }
+
+  .sidebar-body {
+    background: var(--bg-black);
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    min-width: 300px;
+    left: -100%;
+    z-index: 2;
+    padding: 1rem;
+    padding-top: 8rem;
+
+    .module-choicer {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      .module-list-title {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+
+      .module-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .module-list-item {
+          background-color: var(--bg-dark);
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+          align-items: center;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          border-radius: 0.5rem;
+          // transition: background-color 100ms;
+          user-select: none;
+
+          // &:hover {
+          // background-color: var(--bg-neutral);
+          // }
+
+          input {
+            --size: 1.2rem;
+            cursor: pointer;
+
+            &::after {
+            }
+          }
+        }
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        button {
+          // padding: 1em;
+          font-size: 1rem;
+          width: fit-content;
+        }
+      }
+    }
+
+    .theme-switcher {
+      position: absolute;
+      top: 16px;
+      right: 1rem;
+    }
+  }
+
+  &[aria-expanded="true"] .sidebar-body {
+    animation: anim-expand-sidebar 300ms ease forwards;
+  }
+
+  @keyframes anim-expand-sidebar {
+    from {
+      left: -100%;
+    }
+    to {
+      left: 0;
+    }
+  }
+
+  .blackout {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+  }
+}

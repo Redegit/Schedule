@@ -1,4 +1,4 @@
-import Lesson from './Lesson';
+import LessonBody from './LessonBody';
 import './LessonCard.scss'
 
 export const LessonCard = ({ lessonGroup }) => {
@@ -10,7 +10,7 @@ export const LessonCard = ({ lessonGroup }) => {
           <div className="time">{`${lessonGroup[0]?.number}) ${lessonGroup[0]?.getStartTime()} - ${lessonGroup[0]?.getEndTime()}`}</div>
         </div>
         <div className="lesson-group">
-          {!lessonGroup.empty && lessonGroup.map((lesson, index) => <Lesson lesson={lesson} key={index} />)}
+          {!lessonGroup.empty && lessonGroup.map((lesson, index) => <LessonBody lesson={lesson} key={index} />)}
         </div>
       </div>
     )

@@ -11,5 +11,5 @@ COPY . .
 RUN npm run build
 
 EXPOSE 3031
- 
+
 CMD [ "node", "./src/server.js"]

@@ -1,0 +1,45 @@
+.hamburger {
+  --size: 4rem;
+  --clr-line: var(--font-light);
+  --padding: 1rem;
+  --padding-box: 1.2rem;
+  --border-width: 1px;
+  --line-height: 3px;
+  padding: var(--padding);
+  position: relative;
+  box-sizing: border-box;
+  width: var(--size);
+  height: var(--size);
+
+  .line {
+    --_width: calc(var(--size) - (var(--padding) + var(--border-width)) * 2);
+    width: var(--_width);
+    height: var(--line-height);
+    background-color: var(--clr-line);
+    border-radius: calc(var(--_width) / 4);
+    position: absolute;
+    left: var(--padding);
+    --line-gap: calc(
+      (var(--size) - var(--padding-box) * 2 - 3 * var(--line-height)) / 2
+    );
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .line:nth-child(1) {
+    top: var(--padding-box);
+  }
+
+  .line:nth-child(2) {
+    top: calc(
+      var(--line-gap) * 1 + 1 * var(--line-height) + var(--padding-box)
+    );
+  }
+
+  .line:nth-child(3) {
+    top: calc(
+      var(--line-gap) * 2 + 2 * var(--line-height) + var(--padding-box)
+    );
+  }
+}

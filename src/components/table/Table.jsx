@@ -1,4 +1,3 @@
-import { Lesson, modules } from "../../classes/Lesson";
 import { LessonCard } from "../LessonCard/LessonCard";
 import { useState, useEffect } from "react";
 
@@ -7,6 +6,9 @@ import axios from "axios";
 import Controls from "../Controls/Controls";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { capitalize } from "../Controls/WeekSelector/WeekSelector";
+import { useGlobalContext } from "../../hook/useGlobalContext";
+import { compareDates, formatDateString } from "../../classes/Utils";
+import { Lesson } from "../../classes/Lesson";
 
 export const Table = () => {
   const [data, setData] = useState([]);
@@ -15,59 +17,7 @@ export const Table = () => {
   const [weekShift, setWeekShift] = useState(0);
   const [loadingStatus, setLoadingStatus] = useState("loading");
 
-  const getSavedModules = () => {
-    let selectedItems = JSON.parse(localStorage.getItem("chosenModules"));
-    if (selectedItems) {
-      return selectedItems;
-    } else {
-      return modules.map((module) => module.name);
-    }
-  };
-
-  const getIncludeOtherModules = () => {
-    let savedValue = JSON.parse(localStorage.getItem("includeOtherModules"));
-    if (typeof savedValue === "boolean") {
-      return savedValue;
-    } else {
-      return false;
-    }
-  };
-
-  const [chosenModules, setChosenModules] = useState(getSavedModules());
-  const [includeOtherModules, setIncludeOtherModules] = useState(
-    getIncludeOtherModules()
-  );
-
-  const formatDateString = (date) => {
-    let year = `${date.getFullYear()}`;
-    let month = date.getMonth() + 1;
-    if (month < 10) month = `0${month}`;
-    let day = date.getDate();
-    if (day < 10) day = `0${day}`;
-    return `${year}.${month}.${day}`;
-  };
-
-  useEffect(() => {
-    const filterByModules = (data) => {
-      return data.map((dow) =>
-        dow.map((lessonGroup) => {
-          if (includeOtherModules) {
-            return lessonGroup.map((lesson) =>
-              chosenModules.includes(lesson?.getModule())
-                ? lesson
-                : lesson.setIsFromOtherModule()
-            );
-          } else {
-            return lessonGroup.filter((lesson) =>
-              chosenModules.includes(lesson?.getModule())
-            );
-          }
-        })
-      );
-    };
-
-    setFilteredData(() => filterByModules(data));
-  }, [data, chosenModules, includeOtherModules]);
+  const { includeOtherModules, chosenModules } = useGlobalContext();
 
   const transformData = (data) => {
     let newData = [[], [], [], [], [], [], []];
@@ -87,6 +37,28 @@ export const Table = () => {
     }
     return newData;
   };
+
+  useEffect(() => {
+    const filterByModules = (data) => {
+      return data.map((dow) =>
+        dow.map((lessonGroup) => {
+          if (includeOtherModules) {
+            return lessonGroup.map((lesson) =>
+              chosenModules.includes(lesson?.getModule())
+                ? lesson.setNotFromOtherModule()
+                : lesson.setIsFromOtherModule()
+            );
+          } else {
+            return lessonGroup.filter((lesson) =>
+              chosenModules.includes(lesson?.getModule())
+            );
+          }
+        })
+      );
+    };
+
+    setFilteredData(() => filterByModules(data));
+  }, [data, chosenModules, includeOtherModules]);
 
   const fetchData = async (start_date, end_date) => {
     try {
@@ -130,30 +102,12 @@ export const Table = () => {
     setWeekDates(weekDates_tmp);
   }, [weekShift]);
 
-  const compareDates = (date1, date2) => {
-    date1 = new Date(date1);
-    if (
-      date1.getDate() === date2.getDate() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getFullYear() === date2.getFullYear()
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   return (
     <div className="table_container">
       <Controls
         {...{
-          chosenModules,
-          setChosenModules,
-          weekShift,
           setWeekShift,
           weekDates,
-          includeOtherModules,
-          setIncludeOtherModules,
         }}
       />
       {loadingStatus === "error" || loadingStatus === "loading" ? (

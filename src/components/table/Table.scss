@@ -1,6 +1,6 @@
 .table_container {
   padding: 1rem;
-  min-height: 100svh;
+  height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -30,6 +30,7 @@
         font-weight: 500;
         color: var(--font-light);
         border-radius: 1rem;
+        text-wrap: nowrap;
       }
 
       .date--current {
@@ -61,8 +62,8 @@
   }
 }
 
-@container (min-width: 1000px) {
-  .table_container {
-    background-color: red;
+@media screen and (max-width: 425px) {
+  .table_container .table_body {
+    grid-template-columns: 1fr;
   }
 }

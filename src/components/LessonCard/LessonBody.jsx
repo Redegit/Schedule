@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LessonPopUp } from "../LessonPopUp/LessonPopUp";
 
-const Lesson = ({ lesson }) => {
+const LessonBody = ({ lesson }) => {
   const [editorOpened, setEditorOpened] = useState(false);
   const [onCLickMousePos, setOnclickMousePos] = useState({ x: 0, y: 0 });
 
@@ -60,4 +60,4 @@ const Lesson = ({ lesson }) => {
   );
 };
 
-export default Lesson;
+export default LessonBody;
