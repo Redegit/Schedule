@@ -256,6 +256,7 @@ input[type="checkbox"] {
 
 button,
 .btn {
+  -webkit-tap-highlight-color: transparent;
   @include border();
   @include hover_effect();
   font-size: 1em;
@@ -274,4 +275,5 @@ label:has(input[type="checkbox"]) {
 .blackout {
   background-color: var(--bg-blackout);
   // backdrop-filter: blur(1px);
+  -webkit-tap-highlight-color: transparent;
 }
