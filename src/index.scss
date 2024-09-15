@@ -15,7 +15,8 @@
 }
 
 @mixin dark_colors {
-  --bg-black: #1d1d1d;
+  // --bg-black: #1d1d1d;
+  --bg-black: #0b0c0f;
   --bg-dark: rgb(13, 17, 23);
   --bg-neutral: rgb(22, 27, 34);
   --bg-light: #f6f6f6;
@@ -32,8 +33,9 @@
 
 @mixin light_colors {
   --bg-black: #ffffff;
-  --bg-dark: rgb(245, 249, 255);
-  --bg-neutral: rgb(234, 242, 255);
+  --bg-dark: hsl(217 100% 98% / 1);
+  // --bg-neutral: rgb(234, 242, 255);
+  --bg-neutral: rgb(231, 243, 255);
   --bg-light: #181818;
   --font-dark: #f6f6f6;
   --font-light: rgb(1, 4, 9);

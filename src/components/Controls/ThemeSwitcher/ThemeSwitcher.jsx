@@ -1,14 +1,14 @@
 import "./ThemeSwitcher.scss";
 import { useGlobalContext } from "../../../hook/useGlobalContext";
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher = ({ className }) => {
   const { theme, toggleTheme } = useGlobalContext();
 
   return (
     <>
       <button
         onClick={toggleTheme}
-        className="theme-switcher"
+        className={`theme-switcher ${className} btn`}
         data-theme={theme}
       >
         <svg className="theme-switcher-icon">

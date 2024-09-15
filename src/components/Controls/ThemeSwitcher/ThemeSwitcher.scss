@@ -11,9 +11,9 @@
   position: inherit;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s, transform 0.2s;
+  // transition: background-color 0.2s, transform 0.2s;
   padding: 0;
-  border: none;
+  // border: none;
 
   .theme-switcher-icon {
     border-radius: 100%;
@@ -71,8 +71,8 @@
   rotate: -180deg;
 }
 
-.theme-switcher:hover,
-.theme-switcher:focus-visible {
+// .theme-switcher:hover,
+// .theme-switcher:focus-visible {
   // scale: 1.1;
   // transform: translateY(-0.1em);
-}
+// }

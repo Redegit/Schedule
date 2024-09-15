@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Sidebar.scss";
 import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
 import ModuleChoicer from "../ModuleChoicer/ModuleChoicer";
@@ -11,6 +11,20 @@ const Sidebar = () => {
     setOpen((open) => !open);
   };
 
+  useEffect(() => {
+    const handleEscapeDown = (event) => {
+      if (event.code === "Escape" && isOpen) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeDown);
+    };
+  }, [isOpen]);
+
   return (
     <div className="sidebar" aria-expanded={isOpen}>
       <SidebarToggle toggled={isOpen} toggle={toggleSidebar} />
@@ -19,7 +33,7 @@ const Sidebar = () => {
         <>
           <div className="sidebar-body border" aria-hidden={!isOpen}>
             <ModuleChoicer />
-            <ThemeSwitcher />
+            <ThemeSwitcher className={"border"} />
           </div>
           <div
             className="blackout"

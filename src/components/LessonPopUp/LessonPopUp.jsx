@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./LessonPopUp.scss";
 import { useRef } from "react";
 
+// TODO убрать position fixed после окончания анимации появления окна, чтобы оно изменяло положение при изменении размеров окна
 export const LessonPopUp = ({ lesson, hideFunc, mousePos }) => {
   const popupWindowRef = useRef(null);
   const [containerBackIsSolid, setContainerBackIsSolid] = useState(false);

@@ -1,91 +1,108 @@
 .lesson-card {
-    color: var(--font-light);
-    flex: 1;
-    // width: 100%;
-    min-width: fit-content;
-    font-size: 0.9rem;
+  color: var(--font-light);
+  flex: 1;
+  // width: 100%;
+  min-width: fit-content;
+  font-size: 0.9rem;
 
-    .time-container {
-        margin-bottom: 0.5rem;
+  .time-container {
+    margin-bottom: 0.5rem;
 
-        .time {
-            color: var(--font-gray);
-        }
+    .time {
+      color: var(--font-gray);
+    }
+  }
+
+  .lesson {
+    -webkit-tap-highlight-color: transparent;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--bg-neutral);
+    border: 4px solid var(--border-color);
+    --width-border: 4px;
+    border-width: var(--width-border);
+    transition: transform 0.1s ease-out;
+    cursor: pointer;
+
+    .title {
+      font-size: 1.1em;
+      margin-bottom: 0.5em;
+      line-height: 1.1em;
     }
 
-    .lesson {
-        -webkit-tap-highlight-color: transparent;
-        padding: 0.5rem;
-        border-radius: 1rem;
-        background-color: var(--bg-neutral);
-        border: 4px solid var(--border-color);
-        --width-border: 4px;
-        border-width: var(--width-border);
-        transition: transform 0.1s ease-out;
-        cursor: pointer;
-
-        .title {
-            font-size: 1.1em;
-            margin-bottom: 0.5em;
-            line-height: 1.1em;
-        }
-
-        .classroom,
-        .teacher {
-            color: var(--font-gray);
-            font-size: 0.9em;
-            overflow-wrap: normal;
-            word-break: keep-all;
-            white-space: nowrap;
-        }
+    .classroom,
+    .teacher {
+      color: var(--font-gray);
+      font-size: 0.9em;
+      overflow-wrap: normal;
+      word-break: keep-all;
+      white-space: nowrap;
     }
+  }
 
-    .lesson:first-of-type:not(:only-of-type) {
-        border-bottom-width: calc(var(--width-border) / 2);
-        border-radius: 1rem 1rem 0 0;
-    }
+  .lesson:first-of-type:not(:only-of-type) {
+    border-bottom-width: calc(var(--width-border) / 2);
+    border-bottom-style: solid;
+    border-radius: 1rem 1rem 0 0;
+  }
 
-    .lesson:last-of-type:not(:only-of-type) {
-        border-top-width: calc(var(--width-border) / 2);
-        border-radius: 0 0 1rem 1rem;
-    }
+  .lesson:last-of-type:not(:only-of-type) {
+    border-top-width: calc(var(--width-border) / 2);
+    border-top-style: solid;
+    border-radius: 0 0 1rem 1rem;
+  }
 
-    .lesson:not(:first-of-type):not(:last-of-type) {
-        border-radius: 0;
-        // border-block: 0;
-        border-block-width: calc(var(--width-border) / 2);
-    }
+  .lesson:not(:first-of-type):not(:last-of-type) {
+    border-radius: 0;
+    // border-block: 0;
+    border-block-width: calc(var(--width-border) / 2);
+    border-block-style: solid;
+  }
 
-    .lesson.sem {
-        border-color: var(--bg-sem);
-    }
+  .lesson.sem {
+    border-color: var(--bg-sem);
+  }
 
-    .lesson.lec {
-        border-color: var(--bg-lec);
-    }
+  .lesson.lec {
+    border-color: var(--bg-lec);
+  }
 
-    .lesson.test {
-        border-color: var(--bg-test);
-    }
+  .lesson.test {
+    border-color: var(--bg-test);
+  }
 
-    .lesson.exam {
-        border-color: var(--bg-exam);
-    }
+  .lesson.exam {
+    border-color: var(--bg-exam);
+  }
 
-    .lesson.other-module {
-        border-style: dashed;
-        filter: brightness(0.8);
-    }
+  .lesson.other-module {
+    border-style: dashed;
+    stroke-dasharray: 10px 1px;
+  }
 
-    .lesson:hover,
-    .lesson:focus-visible {
-        transform: translateY(-2px) scale(1.05);
-    }
+  .lesson:hover,
+  .lesson:focus-visible {
+    transform: translateY(-2px) scale(1.05);
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .lesson-card .lesson {
-      padding-block: 1.5rem;
-      padding-inline: 1rem;
-    }
+  .lesson-card .lesson {
+    padding-block: 1.5rem;
+    padding-inline: 1rem;
   }
+}
+
+:root[data-theme="light"] {
+  .lesson.other-module {
+    filter: grayscale(0.3);
+    // border-style: solid;
+  }
+}
+
+:root[data-theme="dark"] {
+  .lesson.other-module {
+    // border-style: dashed;
+    filter: brightness(0.8);
+  }
+}

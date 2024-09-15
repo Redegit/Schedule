@@ -37,6 +37,13 @@ const LessonBody = ({ lesson }) => {
     }
   };
 
+  const getSubgroup = (group) => {
+    const match = group.match(/\(([^)]+)\)/);
+
+    const result = match ? match[1] : null;
+    return result;
+  };
+
   return (
     <>
       <div
@@ -48,6 +55,9 @@ const LessonBody = ({ lesson }) => {
         <div className="title">{lesson.name}</div>
         <div className="classroom">{lesson.classroom}</div>
         <div className="teacher">{lesson.teacher}</div>
+        {lesson.group && lesson.group.includes("п/гр") && (
+          <div className="teacher">{getSubgroup(lesson.group)}</div>
+        )}
       </div>
       {editorOpened && (
         <LessonPopUp

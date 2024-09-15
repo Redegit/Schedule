@@ -10,6 +10,7 @@ import { useGlobalContext } from "../../hook/useGlobalContext";
 import { compareDates, formatDateString } from "../../classes/Utils";
 import { Lesson } from "../../classes/Lesson";
 
+// TODO фильтрация по предметам (в виде поиска)
 export const Table = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
