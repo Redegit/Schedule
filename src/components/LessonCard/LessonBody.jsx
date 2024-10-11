@@ -58,6 +58,7 @@ const LessonBody = ({ lesson }) => {
         {lesson.group && lesson.group.includes("п/гр") && (
           <div className="teacher">{getSubgroup(lesson.group)}</div>
         )}
+        <div className={`control-type-indicator ${lesson.getControlType()}`}></div>
       </div>
       {editorOpened && (
         <LessonPopUp

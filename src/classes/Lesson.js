@@ -9,10 +9,21 @@ export class Lesson {
 
   getModule = () => {
     for (let mod of modules) {
-      if (mod.disciplines.includes(this.name)) {
+      if (mod.disciplines.map((disc) => disc.name).includes(this.name)) {
         return mod.name;
       }
     }
+  };
+
+  getControlType = () => {
+    for (let mod of modules) {
+      for (let discipline of mod.disciplines) {
+        if (discipline.name === this.name) {
+          return discipline.control_type;
+        }
+      }
+    }
+    return "";
   };
 
   constructor({
@@ -29,7 +40,7 @@ export class Lesson {
     lecturerEmail,
     replaces,
     stream,
-    group
+    group,
   }) {
     this.name = discipline;
     this.date = date;

@@ -23,11 +23,13 @@
     border-width: var(--width-border);
     transition: transform 0.1s ease-out;
     cursor: pointer;
+    position: relative;
 
     .title {
       font-size: 1.1em;
       margin-bottom: 0.5em;
       line-height: 1.1em;
+      font-weight: 500;
     }
 
     .classroom,
@@ -37,6 +39,24 @@
       overflow-wrap: normal;
       word-break: keep-all;
       white-space: nowrap;
+    }
+
+    .control-type-indicator {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      --size: 0.5rem;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 100%;
+      z-index: 0;
+
+      &.test {
+        background-color: var(--bg-test);
+      }
+      &.exam {
+        background-color: var(--bg-exam);
+      }
     }
   }
 
